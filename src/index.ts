@@ -13,7 +13,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "*",
+    origin: "https://rest-api-demo-frontend.zeabur.app",
     credentials: true,
   })
 );
