@@ -40,7 +40,8 @@ export const isAuthenticated = async (
 ) => {
   try {
     const sessionToken = req.cookies["HENRY-AUTH"];
-
+    console.log("isAuthenticated req", req);
+    console.log("req.cookies", req.cookies);
     if (!sessionToken) {
       console.log("!sessionToken", !sessionToken);
       return res.sendStatus(403);
