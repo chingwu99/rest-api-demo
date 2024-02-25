@@ -13,6 +13,7 @@ const app = express();
 
 app.use(
   cors({
+    origin: "https://rest-api-demo-frontend.zeabur.app",
     credentials: true,
   })
 );
@@ -25,7 +26,6 @@ const server = http.createServer(app);
 
 server.listen(8080, () => {
   console.log("server running on http://rest-api-demo.zeabur.app/");
-  //   console.log(process.env.DATABASE_URL);
 });
 
 const MONGO_URL = process.env.DATABASE_URL as string;
