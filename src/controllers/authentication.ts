@@ -39,7 +39,7 @@ export const login = async (req: express.Request, res: express.Response) => {
     await user.save();
 
     res.cookie("HENRY-AUTH", user.authentication.sessionToken, {
-      domain: "rest-api-demo.zeabur.app",
+      domain: "rest-api-demo-frontend.zeabur.app",
       path: "/",
     });
 
