@@ -25,7 +25,7 @@ app.use(bodyParser.json());
 const server = http.createServer(app);
 
 server.listen(8080, () => {
-  console.log("server running on http://rest-api-demo.zeabur.app/");
+  console.log("server running on https://rest-api-demo.zeabur.app/");
 });
 
 const MONGO_URL = process.env.DATABASE_URL as string;
