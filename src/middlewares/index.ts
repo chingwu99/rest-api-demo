@@ -13,22 +13,15 @@ export const isOwner = async (
     const currentUserId = get(req, "identity._id") as string;
 
     if (!currentUserId) {
-      // console.log("currentUserId", currentUserId);
       return res.sendStatus(403);
     }
 
     if (currentUserId.toString() !== id) {
-      // console.log(
-      //   "currentUserId.toString() !== id",
-      //   currentUserId.toString() !== id
-      // );
       return res.sendStatus(403);
     }
 
     next();
   } catch (error) {
-    console.log(error);
-
     return res.sendStatus(400);
   }
 };
@@ -40,19 +33,14 @@ export const isAuthenticated = async (
 ) => {
   try {
     const sessionToken = req.headers.authorization;
-    // const sessionToken = req.cookies["HENRY-AUTH"];
 
-    console.log("req.headers.authorization", req.headers.authorization);
-    // console.log("req.cookies", req.cookies);
     if (!sessionToken) {
-      // console.log("!sessionToken", !sessionToken);
       return res.sendStatus(403);
     }
 
     const existingUser = await getUserBySessionToken(sessionToken);
 
     if (!existingUser) {
-      // console.log("!existingUser", !existingUser);
       return res.sendStatus(403);
     }
 
@@ -60,7 +48,6 @@ export const isAuthenticated = async (
 
     return next();
   } catch (error) {
-    console.log(error);
     return res.sendStatus(400);
   }
 };

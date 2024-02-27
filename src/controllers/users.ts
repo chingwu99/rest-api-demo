@@ -11,7 +11,6 @@ export const getAllUsers = async (
 
     return res.status(200).json(users);
   } catch (error) {
-    console.log(error);
     return res.sendStatus(400);
   }
 };
@@ -27,7 +26,6 @@ export const deleteUser = async (
 
     return res.json(deleteUser);
   } catch (error) {
-    console.log(error);
     return res.sendStatus(400);
   }
 };
@@ -51,7 +49,6 @@ export const updateUser = async (
 
     return res.status(200).json(user).end();
   } catch (error) {
-    console.log(error);
     return res.sendStatus(400);
   }
 };

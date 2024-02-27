@@ -22,10 +22,6 @@ export const login = async (req: express.Request, res: express.Response) => {
     const expectedHash = authentication(user.authentication.salt, password);
 
     if (user.authentication.password !== expectedHash) {
-      // console.log(
-      //   "user.authentication.password !== expectedHash",
-      //   user.authentication.password !== expectedHash
-      // );
       return res.sendStatus(403);
     }
 
@@ -41,13 +37,10 @@ export const login = async (req: express.Request, res: express.Response) => {
     res.cookie("HENRY-AUTH", user.authentication.sessionToken, {
       domain: "rest-api-demo-frontend.zeabur.app",
       path: "/",
-      // sameSite: "none",
-      // secure: true,
     });
 
     return res.status(200).json(user).end();
   } catch (error) {
-    console.log(error);
     return res.sendStatus(400);
   }
 };
@@ -78,7 +71,6 @@ export const register = async (req: express.Request, res: express.Response) => {
 
     return res.status(200).json(user).end();
   } catch (error) {
-    console.log(error);
     return res.sendStatus(400);
   }
 };
