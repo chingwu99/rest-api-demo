@@ -15,11 +15,14 @@ export const login = async (req: express.Request, res: express.Response) => {
       "+authentication.salt +authentication.password"
     );
 
-    if (!user) {
+    if (!user || !user.authentication) {
       return res.sendStatus(400);
     }
 
-    const expectedHash = authentication(user.authentication.salt, password);
+    const expectedHash = authentication(
+      user.authentication.salt as string,
+      password
+    );
 
     if (user.authentication.password !== expectedHash) {
       return res.sendStatus(403);

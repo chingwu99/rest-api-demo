@@ -44,6 +44,10 @@ export const updateUser = async (
 
     const user = await getUserById(id);
 
+    if (!user) {
+      return res.sendStatus(400);
+    }
+
     user.username = username;
     await user.save();
 
